@@ -1,0 +1,38 @@
+---
+# default vars ansible-yazvs
+
+freebsd_install_method: "packages"
+#freebsd_install_method: "ports"
+#freebsd_use_packages: "yes"
+
+bsd_yazvs_packages:
+  - p5-Net-DNS
+  - p5-Net-DNS-SEC
+  - p5-Net-DNS-ZoneFile-Fast
+  - p5-Switch
+  - p5-List-Compare
+
+bsd_yazvs_bin: "yazvs.pl"
+bsd_yazvs_bin_dir: "/root/bin"
+bsd_yazvs_source_dir: "/usr/local/src/yazvs"
+bsd_yazvs_source_url: "http://yazvs.verisignlabs.com"
+#
+bsd_yazvs_cron: "no"
+bsd_yazvs_cron_user: "root"
+bsd_yazvs_cron_mailto: "root"
+bsd_yazvs_cron_hour: "*/4"
+bsd_yazvs_cron_minute: "20"
+bsd_yazvs_cron_command: "/root/bin/yazvs.pl"
+# TODO: Find valid command
+# yazvs.pl  -u -x -a /usr/local/etc/namedb/keys/dsset-example.com. -e 30 -t /usr/local/etc/namedb/keys/Kexample.com.KSK.key -n Kexample.com.KSK -m master /usr/local/etc/namedb/master/example.com.signed
+#Crypto Validation of example.com 2016102502
+#----------------------------------------------------------------------
+#OK: Parsed 34 RRs from /usr/local/etc/namedb/master/example.com.signed
+#OK: 1 trusted KSKs found
+#PROBLEM: Cannot validate DNSKEY RRset with KSKs
+#PROBLEM: 16 expiring RRSIGs found
+#OK: 0 bad RRSIGs found
+#PROBLEM: 0 good RRSIGs found
+
+# EOF
+...

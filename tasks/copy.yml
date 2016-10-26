@@ -1,0 +1,42 @@
+---
+
+- name: Copy script to {{bsd_yazvs_bin_dir }}.patched
+  copy: >
+    src="{{bsd_yazvs_source_dir}}/{{bsd_yazvs_bin}}"
+    dest="{{bsd_yazvs_source_dir}}/{{bsd_yazvs_bin}}.patched"
+    remote_src="yes"
+    owner="root"
+    group="wheel"
+    mode="755"
+  changed_when: false
+
+- name: Which perl
+  command: "which perl"
+  register: which_perl
+  changed_when: false
+
+- debug: msg="{{which_perl.stdout}}"
+
+- name: Patch {{which_perl.stdout}} in {{bsd_yazvs_source_dir}}/{{bsd_yazvs_bin}}.patched
+  lineinfile: >
+    dest="{{bsd_yazvs_source_dir}}/{{bsd_yazvs_bin}}.patched"
+    regexp="#!"
+    line="#!{{which_perl.stdout}}"
+  changed_when: false
+
+- name: Create directory for installation {{bsd_yazvs_bin_dir}}
+  file: >
+    state="directory"
+    path="{{bsd_yazvs_bin_dir}}"
+
+- name: Copy {{bsd_yazvs_source_dir}}/{{bsd_yazvs_bin}}.patched to {{bsd_yazvs_bin_dir}}/{{bsd_yazvs_bin}}
+  copy: >
+    src="{{bsd_yazvs_source_dir}}/{{bsd_yazvs_bin}}.patched"
+    dest="{{bsd_yazvs_bin_dir}}/{{bsd_yazvs_bin}}"
+    remote_src="yes"
+    owner="root"
+    group="wheel"
+    mode="755"
+
+# EOF
+...

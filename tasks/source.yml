@@ -1,0 +1,14 @@
+---
+
+- name: Create directory for the source code {{bsd_yazvs_source_dir}}
+  file: >
+    state="directory"
+    path="{{bsd_yazvs_source_dir}}"
+
+- name: Download source from {{bsd_yazvs_source_url}}/{{bsd_yazvs_bin}}
+  get_url: >
+    url="{{bsd_yazvs_source_url}}/{{bsd_yazvs_bin}}"
+    dest="{{bsd_yazvs_source_dir}}/{{bsd_yazvs_bin}}"
+
+# EOF
+...
