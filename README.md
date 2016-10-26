@@ -5,6 +5,8 @@ YAZVS (Yet Another Zone Validation Script)
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/ansible-yazvs/) Install YAZVS (Yet Another Zone Validation Script) from [yazvs.verisignlabs.com](http://yazvs.verisignlabs.com/). Optionaly configure cron to check DNSSEC.
 
+WIP. See TODO section.
+
 
 Requirements.
 ------------
