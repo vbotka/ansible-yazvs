@@ -44,8 +44,8 @@ Note
 Example to extract KSK from the tested zone.
 
 ```
-> $ dig @lax.xfr.dns.icann.org example.com axfr > example.com
-> $ dig example.com dnskey | awk '$5 == 257' > example.com.ksk
+> dig @lax.xfr.dns.icann.org example.com axfr > example.com
+> dig example.com dnskey | awk '$5 == 257' > example.com.ksk
 ```
 
 
