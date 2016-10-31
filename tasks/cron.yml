@@ -10,10 +10,10 @@
 - name: Configure cron DNSSEC check
   cron: >
     name="Check DNSSEC"
-    user="{{bsd-yazvs_cron_user}}"
+    user="{{bsd_yazvs_cron_user}}"
     job="{{bsd_yazvs_cron_command}}"
-    hour="{{bsd-yazvs_cron_hour}}"
-    minute="{{bsd-yazvs_cron_minute}}"
+    hour="{{bsd_yazvs_cron_hour}}"
+    minute="{{bsd_yazvs_cron_minute}}"
   when: bsd_yazvs_cron == "yes"
 
 # EOF
