@@ -3,9 +3,7 @@ YAZVS (Yet Another Zone Validation Script)
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-yazvs.svg?branch=master)](https://travis-ci.org/vbotka/ansible-yazvs)
 
-[Ansible role.](https://galaxy.ansible.com/vbotka/ansible-yazvs/) (Not uploaded yet. WIP). Install YAZVS (Yet Another Zone Validation Script) from [yazvs.verisignlabs.com](http://yazvs.verisignlabs.com/). Optionaly configure cron to check DNSSEC.
-
-WIP. See TODO section.
+[Ansible role.](https://galaxy.ansible.com/vbotka/ansible-yazvs/) Install YAZVS (Yet Another Zone Validation Script) from [yazvs.verisignlabs.com](http://yazvs.verisignlabs.com/). Optionaly configure cron to check DNSSEC.
 
 
 Requirements.
@@ -65,3 +63,4 @@ Author Information.
 ------------------
 
 [Vladimir Botka](https://botka.link)
+
