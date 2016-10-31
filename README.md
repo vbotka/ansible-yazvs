@@ -39,7 +39,7 @@ None.
 Note
 ----
 
-Example to extract KSK from the tested zone.
+Example how to extract KSK from the tested zone.
 
 ```
 > dig @lax.xfr.dns.icann.org example.com axfr > example.com
