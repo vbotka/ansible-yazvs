@@ -35,6 +35,45 @@ Dependencies.
 
 None.
 
+Workflow
+--------
+
+1) Change shell to /bin/sh.
+
+```
+ansible host -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod user -s /bin/sh'
+```
+
+2) Install role.
+
+```
+ansible-galaxy install vbotka.yazvs
+```
+
+3) Fit variables.
+
+```
+~/.ansible/roles/vbotka.yazvs/vars/main.yml
+```
+
+4) Create playbook.
+
+```
+> cat ~/.ansible/playbooks/freebsd-yazvs.yml
+---
+- hosts: example.com
+  become: yes
+  become_method: sudo
+  roles:
+    - role: vbotka.yazvs
+```
+
+5) Install and configure yazvs.
+
+```
+ansible-playbook ~/.ansible/playbooks/freebsd-yazvs.yml
+```
+
 
 Note
 ----
