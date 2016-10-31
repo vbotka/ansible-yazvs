@@ -23,10 +23,10 @@ Set bsd_yazvs_cron to enable cron.
 bsd_yazvs_cron: "yes"
 ```
 
-Fit default command to your needs.
+Fit cron command to your needs (see Note).
 
 ```
-bsd_yazvs_cron_command: "/root/bin/yazvs.pl"
+bsd_yazvs_cron_command: "/root/bin/yazvs.pl -u -a example.com.ksk -e 7 -m lax.xfr.dns.icann.org example.com"
 ```
 
 TBD (Check defaults).
@@ -38,22 +38,16 @@ Dependencies.
 None.
 
 
-TODO
+Note
 ----
 
-Find valid command to validate DNSSEC
+Example to extract KSK from the tested zone.
 
 ```
-# yazvs.pl  -u -x -a /usr/local/etc/namedb/keys/dsset-example.com. -e 30 -t /usr/local/etc/namedb/keys/Kexample.com.KSK.key -n Kexamlle.com.KSK -m master /usr/local/etc/namedb/master/example.com.signed
-Crypto Validation of example.com 2016102502
-----------------------------------------------------------------------
-OK: Parsed 34 RRs from /usr/local/etc/namedb/master/example.com.signed
-OK: 1 trusted KSKs found
-PROBLEM: Cannot validate DNSKEY RRset with KSKs
-PROBLEM: 16 expiring RRSIGs found
-OK: 0 bad RRSIGs found
-PROBLEM: 0 good RRSIGs found
+> $ dig @lax.xfr.dns.icann.org example.com axfr > example.com
+> $ dig example.com dnskey | awk '$5 == 257' > example.com.ksk
 ```
+
 
 References
 ----------
