@@ -22,7 +22,14 @@ bsd_yazvs_cron_user: "root"
 bsd_yazvs_cron_mailto: "root"
 bsd_yazvs_cron_hour: "*/4"
 bsd_yazvs_cron_minute: "20"
-bsd_yazvs_cron_command: "/root/bin/yazvs.pl"
+bsd_yazvs_cron_command: "/root/bin/Validate-DNS.sh"
+#
+#bsd_Validate_DNS_NAMESERVER: "lax.xfr.dns.icann.org"
+bsd_Validate_DNS_DOMAIN: "example.com"
+bsd_Validate_DNS_KEYDIR: "/root/ksk"
+bsd_Validate_DNS_EXPDAYS: "20"
+bsd_Validate_DNS_VERBOSE: "0"
+bsd_Validate_DNS_DEBUG: "0"
 
 # EOF
 ...

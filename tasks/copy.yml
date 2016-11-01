@@ -9,13 +9,16 @@
     group="wheel"
     mode="755"
   changed_when: false
+  tags: bsd_yazvs_source_copy
 
 - name: Which perl
   command: "which perl"
   register: which_perl
   changed_when: false
+  tags: bsd_yazvs_which_perl
 
-- debug: msg="{{which_perl.stdout}}"
+#- debug: msg="{{which_perl.stdout}}"
+#  tags: bsd_yazvs_which_perl
 
 - name: Patch {{which_perl.stdout}} in {{bsd_yazvs_source_dir}}/{{bsd_yazvs_bin}}.patched
   lineinfile: >
@@ -23,11 +26,13 @@
     regexp="#!"
     line="#!{{which_perl.stdout}}"
   changed_when: false
+  tags: bsd_yazvs_source_patch
 
 - name: Create directory for installation {{bsd_yazvs_bin_dir}}
   file: >
     state="directory"
     path="{{bsd_yazvs_bin_dir}}"
+  tags: bsd_yazvs_bindir_create
 
 - name: Copy {{bsd_yazvs_source_dir}}/{{bsd_yazvs_bin}}.patched to {{bsd_yazvs_bin_dir}}/{{bsd_yazvs_bin}}
   copy: >
@@ -37,6 +42,17 @@
     owner="root"
     group="wheel"
     mode="755"
+  tags: bsd_yazvs_bin_copy
+
+- name: Create script for cron
+  template: >
+    src="Validate-DNS.j2"
+    dest="{{bsd_yazvs_bin_dir}}/Validate-DNS.sh"
+    owner="root"
+    group="wheel"
+    mode="0755"
+    backup="yes"
+  tags: bsd_yazvs_cron_script_create
 
 # EOF
 ...

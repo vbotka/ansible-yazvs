@@ -1,0 +1,42 @@
+#!/usr/local/bin/bash
+#set -x
+
+{% if bsd_Validate_DNS_NAMESERVER %}
+NAMESERVER="{{bsd_Validate_DNS_NAMESERVER}}"
+{% endif %}
+DOMAIN="{{bsd_Validate_DNS_DOMAIN}}"
+KEYDIR="{{bsd_Validate_DNS_KEYDIR}}"
+EXPDAYS="{{bsd_Validate_DNS_EXPDAYS}}"
+VERBOSE="{{bsd_Validate_DNS_VERBOSE}}"
+DEBUG="{{bsd_Validate_DNS_DEBUG}}"
+
+ERR="0"
+
+(($DEBUG)) && printf "NAMESERVER: $NAMESERVER\n"
+(($DEBUG)) && printf "DOMAIN: $DOMAIN\n"
+
+cd $KEYDIR
+for i in $DOMAIN; do
+    (($VERBOSE)) && printf " *** DOMAIN: $i\n"
+    if [ -z ${NAMESERVER+x} ]; then
+	(dig $i axfr > $i)
+	(dig $i dnskey | awk '$5 == 257' > $i.ksk)
+	LOG=$(/root/bin/yazvs.pl -x -a $i.ksk -e $EXPDAYS $i)
+	(($VERBOSE)) && printf "$LOG\n"
+	if [[ ! $LOG == *"0 expiring RRSIGs found"* ]]; then
+	    printf "$i : Expiring RRSIGs in $EXPDAYS days found.\n"
+	    ERR=1
+	fi
+    else
+	(dig @$NAMESERVER $i axfr > $i)
+	(dig $i dnskey | awk '$5 == 257' > $i.ksk)
+	LOG=$(/root/bin/yazvs.pl -x -a $i.ksk -e $EXPDAYS -m $NAMESERVER $i)
+	(($VERBOSE)) && printf "$LOG\n"
+	if [[ ! $LOG == *"0 expiring RRSIGs found"* ]]; then
+	    printf "$i : Expiring RRSIGs in $EXPDAYS days found.\n"
+	    ERR=1
+	fi
+    fi
+done
+
+(($ERR)) && exit $ERR || exit 0
