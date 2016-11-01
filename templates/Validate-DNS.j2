@@ -1,6 +1,7 @@
 #!/usr/local/bin/bash
 #set -x
 
+YAZVS="{{bsd_yazvs_bin_dir}}/{{bsd_yazvs_bin}}"
 {% if bsd_Validate_DNS_NAMESERVER %}
 NAMESERVER="{{bsd_Validate_DNS_NAMESERVER}}"
 {% endif %}
@@ -19,21 +20,35 @@ cd $KEYDIR
 for i in $DOMAIN; do
     (($VERBOSE)) && printf " *** DOMAIN: $i\n"
     if [ -z ${NAMESERVER+x} ]; then
-	(dig $i axfr > $i)
-	(dig $i dnskey | awk '$5 == 257' > $i.ksk)
-	LOG=$(/root/bin/yazvs.pl -x -a $i.ksk -e $EXPDAYS $i)
+	if [ ! -e $i ]; then
+	    (dig $i axfr > $i)
+	fi
+	if [ ! -e $i.ksk ]; then
+	    (dig $i dnskey | awk '$5 == 257' > $i.ksk)
+	fi
+	LOG=$($YAZVS -a $i.ksk -e $EXPDAYS $i)
 	(($VERBOSE)) && printf "$LOG\n"
-	if [[ ! $LOG == *"0 expiring RRSIGs found"* ]]; then
-	    printf "$i : Expiring RRSIGs in $EXPDAYS days found.\n"
+#	if [[ ! $LOG == *"0 expiring RRSIGs found"* ]]; then
+#	    printf "$i : Expiring RRSIGs in $EXPDAYS days found.\n"
+	if [[ $LOG == *"FAILED"* ]]; then
+	    printf "\n$i   Validation FAILED -----------------------------------------\n"
+	    printf "$i : $LOG\n"
 	    ERR=1
 	fi
     else
-	(dig @$NAMESERVER $i axfr > $i)
-	(dig $i dnskey | awk '$5 == 257' > $i.ksk)
-	LOG=$(/root/bin/yazvs.pl -x -a $i.ksk -e $EXPDAYS -m $NAMESERVER $i)
+	if [ ! -e $i ]; then
+	    (dig @$NAMESERVER $i axfr > $i)
+	fi
+	if [ ! -e $i.ksk ]; then
+	    (dig $i dnskey | awk '$5 == 257' > $i.ksk)
+	fi
+	LOG=$($YAZVS -a $i.ksk -e $EXPDAYS -m $NAMESERVER $i)
 	(($VERBOSE)) && printf "$LOG\n"
-	if [[ ! $LOG == *"0 expiring RRSIGs found"* ]]; then
-	    printf "$i : Expiring RRSIGs in $EXPDAYS days found.\n"
+#	if [[ ! $LOG == *"0 expiring RRSIGs found"* ]]; then
+#	    printf "$i : Expiring RRSIGs in $EXPDAYS days found.\n"
+	if [[ $LOG == *"FAILED"* ]]; then
+	    printf "\n$i   Validation FAILED -----------------------------------------\n"
+	    printf "$i : $LOG\n"
 	    ERR=1
 	fi
     fi
