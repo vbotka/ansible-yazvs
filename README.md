@@ -21,7 +21,11 @@ Set bsd_yazvs_cron to enable cron.
 bsd_yazvs_cron: "yes"
 ```
 
-Fit cron command to your needs. Review the template Validate-DNS.j2 and related bsd_Validate_DNS_* variables.
+Fit cron command to your needs.
+
+- Review the template Validate-DNS.j2
+- Review related bsd_Validate_DNS_* variables
+- Review options of yazvs.pl
 
 ```
 bsd_yazvs_cron_command: "Validate-DNS.sh"
