@@ -21,10 +21,10 @@ Set bsd_yazvs_cron to enable cron.
 bsd_yazvs_cron: "yes"
 ```
 
-Fit cron command to your needs (see Note).
+Fit cron command to your needs. Review the template Validate-DNS.j2 and related bsd_Validate_DNS_* variables.
 
 ```
-bsd_yazvs_cron_command: "/root/bin/yazvs.pl -u -a example.com.ksk -e 7 -m lax.xfr.dns.icann.org example.com"
+bsd_yazvs_cron_command: "Validate-DNS.sh"
 ```
 
 TBD (Check defaults).
@@ -34,6 +34,7 @@ Dependencies.
 ------------
 
 None.
+
 
 Workflow
 --------
@@ -75,14 +76,13 @@ ansible-playbook ~/.ansible/playbooks/freebsd-yazvs.yml
 ```
 
 
-Note
-----
-
-Example how to extract KSK from the tested zone.
+Example how to run yazvs.pl
+---------------------------
 
 ```
-> dig @lax.xfr.dns.icann.org example.com axfr > example.com
-> dig example.com dnskey | awk '$5 == 257' > example.com.ksk
+dig @lax.xfr.dns.icann.org example.com axfr > example.com
+dig example.com dnskey | awk '$5 == 257' > example.com.ksk
+yazvs.pl -u -a example.com.ksk -e 7 -m lax.xfr.dns.icann.org example.com
 ```
 
 
