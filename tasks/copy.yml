@@ -2,8 +2,8 @@
 
 - name: Copy script to {{bsd_yazvs_bin_dir }}.patched
   copy: >
-    src="{{bsd_yazvs_source_dir}}/{{bsd_yazvs_bin}}"
-    dest="{{bsd_yazvs_source_dir}}/{{bsd_yazvs_bin}}.patched"
+    src="{{ bsd_yazvs_source_dir }}/{{ bsd_yazvs_bin }}"
+    dest="{{ bsd_yazvs_source_dir }}/{{ bsd_yazvs_bin }}.patched"
     remote_src="yes"
     owner="root"
     group="wheel"
@@ -20,24 +20,25 @@
 #- debug: msg="{{which_perl.stdout}}"
 #  tags: bsd_yazvs_which_perl
 
-- name: Patch {{which_perl.stdout}} in {{bsd_yazvs_source_dir}}/{{bsd_yazvs_bin}}.patched
+- name: Patch {{ which_perl.stdout }} in {{ bsd_yazvs_source_dir }}/{{ bsd_yazvs_bin }}.patched
   lineinfile: >
-    dest="{{bsd_yazvs_source_dir}}/{{bsd_yazvs_bin}}.patched"
+    dest="{{ bsd_yazvs_source_dir }}/{{ bsd_yazvs_bin }}.patched"
     regexp="#!"
-    line="#!{{which_perl.stdout}}"
+    line="#!{{ which_perl.stdout }}"
   changed_when: false
+  when: not ansible_check_mode
   tags: bsd_yazvs_source_patch
 
-- name: Create directory for installation {{bsd_yazvs_bin_dir}}
+- name: Create directory for installation {{ bsd_yazvs_bin_dir }}
   file: >
     state="directory"
-    path="{{bsd_yazvs_bin_dir}}"
+    path="{{ bsd_yazvs_bin_dir }}"
   tags: bsd_yazvs_bindir_create
 
-- name: Copy {{bsd_yazvs_source_dir}}/{{bsd_yazvs_bin}}.patched to {{bsd_yazvs_bin_dir}}/{{bsd_yazvs_bin}}
+- name: Copy {{ bsd_yazvs_source_dir }}/{{ bsd_yazvs_bin }}.patched to {{ bsd_yazvs_bin_dir }}/{{ bsd_yazvs_bin }}
   copy: >
-    src="{{bsd_yazvs_source_dir}}/{{bsd_yazvs_bin}}.patched"
-    dest="{{bsd_yazvs_bin_dir}}/{{bsd_yazvs_bin}}"
+    src="{{ bsd_yazvs_source_dir }}/{{ bsd_yazvs_bin }}.patched"
+    dest="{{ bsd_yazvs_bin_dir }}/{{ bsd_yazvs_bin }}"
     remote_src="yes"
     owner="root"
     group="wheel"
@@ -47,7 +48,7 @@
 - name: Create script for cron
   template: >
     src="Validate-DNS.j2"
-    dest="{{bsd_yazvs_bin_dir}}/Validate-DNS.sh"
+    dest="{{ bsd_yazvs_bin_dir }}/Validate-DNS.sh"
     owner="root"
     group="wheel"
     mode="0755"
