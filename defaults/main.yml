@@ -1,16 +1,16 @@
 ---
-# default vars ansible-yazvs
+# default vars vbotka.yazvs
 
 freebsd_install_method: "packages"
 #freebsd_install_method: "ports"
 #freebsd_use_packages: "yes"
 
 bsd_yazvs_packages:
-  - p5-Net-DNS
-  - p5-Net-DNS-SEC
-  - p5-Net-DNS-ZoneFile-Fast
-  - p5-Switch
-  - p5-List-Compare
+  - dns/p5-Net-DNS
+  - dns/p5-Net-DNS-SEC
+  - dns/p5-Net-DNS-ZoneFile-Fast
+  - lang/p5-Switch
+  - misc/p5-List-Compare
 
 bsd_yazvs_bin: "yazvs.pl"
 bsd_yazvs_bin_dir: "/root/bin"

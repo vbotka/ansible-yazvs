@@ -2,6 +2,8 @@
 
 - include: packages.yml
   tags:
+    - bsd_packages
+    - bsd_ports
     - bsd_yazvs_packages
     - bsd_yazvs_all
 
