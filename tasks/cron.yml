@@ -1,9 +1,9 @@
 ---
 
-- name: Configure cron MAILTO="{{ bsd_yazvs_cron_mailto }}"
+- name: Configure cron MAILTO={{ bsd_yazvs_cron_mailto }}
   cronvar: >
     name="MAILTO"
-    value="\"{{ bsd_yazvs_cron_mailto }}\""
+    value="{{ bsd_yazvs_cron_mailto }}"
     user="{{ bsd_yazvs_cron_user }}"
   when: bsd_yazvs_cron == "yes"
 
