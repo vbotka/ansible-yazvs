@@ -1,26 +1,20 @@
 ---
+# tasks for vbotka.yazvs
 
 - include: packages.yml
-  tags:
-    - bsd_packages
-    - bsd_ports
-    - bsd_yazvs_packages
-    - bsd_yazvs_all
+  tags: bsd_yazvs_packages
 
 - include: source.yml
-  tags:
-    - bsd_yazvs_source
-    - bsd_yazvs_all
+  tags: bsd_yazvs_source
 
 - include: copy.yml
-  tags:
-    - bsd_yazvs_copy
-    - bsd_yazvs_all
+  tags: bsd_yazvs_copy
+
+- include: script.yml
+  tags: bsd_yazvs_script
 
 - include: cron.yml
-  tags:
-    - bsd_yazvs_cron
-    - bsd_yazvs_all
+  tags: bsd_yazvs_cron
 
 # EOF
 ...

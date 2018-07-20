@@ -12,12 +12,15 @@ bsd_yazvs_packages:
   - lang/p5-Switch
   - misc/p5-List-Compare
 
+bsd_yazvs_geturl_force: no
+bsd_yazvs_backup_conf: no
+
 bsd_yazvs_bin: "yazvs.pl"
 bsd_yazvs_bin_dir: "/root/bin"
 bsd_yazvs_source_dir: "/usr/local/src/yazvs"
 bsd_yazvs_source_url: "http://yazvs.verisignlabs.com"
 #
-bsd_yazvs_cron: "no"
+bsd_yazvs_cron: false
 bsd_yazvs_cron_user: "root"
 bsd_yazvs_cron_mailto: "root"
 bsd_yazvs_cron_hour: "*/4"

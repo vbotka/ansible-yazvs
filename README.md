@@ -15,13 +15,13 @@ None.
 Role Variables.
 --------------
 
-Set bsd_yazvs_cron to enable cron.
+Set *bsd_yazvs_cron* to enable cron.
 
 ```
-bsd_yazvs_cron: "yes"
+bsd_yazvs_cron: true
 ```
 
-Fit cron command to your needs.
+Fit cron command to your needs:
 
 - Review the template Validate-DNS.j2
 - Review related bsd_Validate_DNS_* variables
@@ -31,7 +31,7 @@ Fit cron command to your needs.
 bsd_yazvs_cron_command: "Validate-DNS.sh"
 ```
 
-TBD (Check defaults).
+TBD. Review defaults and examples in vars.
 
 
 Dependencies.
@@ -46,37 +46,34 @@ Workflow
 1) Change shell to /bin/sh.
 
 ```
-ansible host -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod user -s /bin/sh'
+# ansible host -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod user -s /bin/sh'
 ```
 
 2) Install role.
 
 ```
-ansible-galaxy install vbotka.yazvs
+# ansible-galaxy install vbotka.yazvs
 ```
 
 3) Fit variables.
 
 ```
-~/.ansible/roles/vbotka.yazvs/vars/main.yml
+# editor vbotka.yazvs/vars/main.yml
 ```
 
 4) Create playbook.
 
 ```
-> cat ~/.ansible/playbooks/freebsd-yazvs.yml
----
-- hosts: example.com
-  become: yes
-  become_method: sudo
+# cat freebsd-yazvs.yml
+- hosts: srv.example.com
   roles:
-    - role: vbotka.yazvs
+    - vbotka.yazvs
 ```
 
 5) Install and configure yazvs.
 
 ```
-ansible-playbook ~/.ansible/playbooks/freebsd-yazvs.yml
+# ansible-playbook freebsd-yazvs.yml
 ```
 
 
@@ -106,4 +103,3 @@ Author Information.
 ------------------
 
 [Vladimir Botka](https://botka.link)
-
