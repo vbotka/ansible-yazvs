@@ -1,15 +1,15 @@
 #!/usr/local/bin/bash
 #set -x
 
-YAZVS="{{bsd_yazvs_bin_dir}}/{{bsd_yazvs_bin}}"
+YAZVS="{{ bsd_yazvs_bin_dir }}/{{ bsd_yazvs_bin }}"
 {% if bsd_Validate_DNS_NAMESERVER %}
-NAMESERVER="{{bsd_Validate_DNS_NAMESERVER}}"
+NAMESERVER="{{ bsd_Validate_DNS_NAMESERVER }}"
 {% endif %}
-DOMAIN="{{bsd_Validate_DNS_DOMAIN}}"
-KEYDIR="{{bsd_Validate_DNS_KEYDIR}}"
-EXPDAYS="{{bsd_Validate_DNS_EXPDAYS}}"
-VERBOSE="{{bsd_Validate_DNS_VERBOSE}}"
-DEBUG="{{bsd_Validate_DNS_DEBUG}}"
+DOMAIN="{{ bsd_Validate_DNS_DOMAIN }}"
+KEYDIR="{{ bsd_Validate_DNS_KEYDIR }}"
+EXPDAYS="{{ bsd_Validate_DNS_EXPDAYS }}"
+VERBOSE="{{ bsd_Validate_DNS_VERBOSE }}"
+DEBUG="{{ bsd_Validate_DNS_DEBUG }}"
 
 ERR="0"
 

@@ -1,6 +1,6 @@
 ---
 
-- name: "copy: Copy script to {{bsd_yazvs_bin_dir }}.patched"
+- name: "copy: Copy script to {{ bsd_yazvs_bin_dir }}.patched"
   copy:
     src: "{{ bsd_yazvs_source_dir }}/{{ bsd_yazvs_bin }}"
     dest: "{{ bsd_yazvs_source_dir }}/{{ bsd_yazvs_bin }}.patched"
@@ -18,10 +18,12 @@
   changed_when: false
   tags: bsd_yazvs_which_perl
 
-#- debug: msg="{{which_perl.stdout}}"
-#  tags: bsd_yazvs_which_perl
+# - debug: msg="{{ which_perl.stdout }}"
+#   tags: bsd_yazvs_which_perl
 
-- name: "copy: Patch {{ which_perl.stdout }} in {{ bsd_yazvs_source_dir }}/{{ bsd_yazvs_bin }}.patched"
+- name: >
+    copy: Patch {{ which_perl.stdout }} in
+    {{ bsd_yazvs_source_dir }}/{{ bsd_yazvs_bin }}.patched
   lineinfile:
     dest: "{{ bsd_yazvs_source_dir }}/{{ bsd_yazvs_bin }}.patched"
     regexp: "#!"
@@ -36,7 +38,9 @@
     path: "{{ bsd_yazvs_bin_dir }}"
   tags: bsd_yazvs_bindir_create
 
-- name: "copy: Copy {{ bsd_yazvs_source_dir }}/{{ bsd_yazvs_bin }}.patched to {{ bsd_yazvs_bin_dir }}/{{ bsd_yazvs_bin }}"
+- name: >
+    copy: Copy {{ bsd_yazvs_source_dir }}/{{ bsd_yazvs_bin }}.patched to
+    {{ bsd_yazvs_bin_dir }}/{{ bsd_yazvs_bin }}
   copy:
     src: "{{ bsd_yazvs_source_dir }}/{{ bsd_yazvs_bin }}.patched"
     dest: "{{ bsd_yazvs_bin_dir }}/{{ bsd_yazvs_bin }}"

@@ -2,8 +2,8 @@
 # default vars vbotka.yazvs
 
 freebsd_install_method: "packages"
-#freebsd_install_method: "ports"
-#freebsd_use_packages: "yes"
+# freebsd_install_method: "ports"
+# freebsd_use_packages: "yes"
 
 bsd_yazvs_packages:
   - dns/p5-Net-DNS
@@ -18,7 +18,8 @@ bsd_yazvs_backup_conf: no
 bsd_yazvs_bin: "yazvs.pl"
 bsd_yazvs_bin_dir: "/root/bin"
 bsd_yazvs_source_dir: "/usr/local/src/yazvs"
-bsd_yazvs_source_url: "http://yazvs.verisignlabs.com"
+bsd_yazvs_source_url: "https://github.com/verisign/yazvs/raw/master"
+# bsd_yazvs_source_url: "http://yazvs.verisignlabs.com"
 #
 bsd_yazvs_cron: false
 bsd_yazvs_cron_user: "root"
@@ -27,7 +28,7 @@ bsd_yazvs_cron_hour: "*/4"
 bsd_yazvs_cron_minute: "20"
 bsd_yazvs_cron_command: "/root/bin/Validate-DNS.sh"
 #
-#bsd_Validate_DNS_NAMESERVER: "lax.xfr.dns.icann.org"
+bsd_Validate_DNS_NAMESERVER: "lax.xfr.dns.icann.org"
 bsd_Validate_DNS_DOMAIN: "example.com"
 bsd_Validate_DNS_KEYDIR: "/root/ksk"
 bsd_Validate_DNS_EXPDAYS: "20"
