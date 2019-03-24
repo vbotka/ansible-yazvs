@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: yazvs
   author: Vladimir Botka
   description: >
     FreeBSD. Install YAZVS (Yet Another Zone Validation Script) and
