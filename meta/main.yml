@@ -2,9 +2,10 @@
 galaxy_info:
   role_name: yazvs
   author: Vladimir Botka
-  description: >
-    FreeBSD. Install YAZVS (Yet Another Zone Validation Script) and
-    configure cron to check DNSSEC.
+  description: |
+    FreeBSD. Install YAZVS (Yet Another Zone Validation Script)
+    and configure cron to check DNSSEC.
+
   company: https://botka.link
   github_branch: master
   license: BSD
