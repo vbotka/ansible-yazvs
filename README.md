@@ -1,19 +1,18 @@
-YAZVS (Yet Another Zone Validation Script)
-==========================================
+# YAZVS (Yet Another Zone Validation Script)
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-yazvs.svg?branch=master)](https://travis-ci.org/vbotka/ansible-yazvs)
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/yazvs/) Install YAZVS (Yet Another Zone Validation Script) from [yazvs.verisignlabs.com](http://yazvs.verisignlabs.com/). Optionaly configure cron to check DNSSEC.
 
+Feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-yazvs/issues). Contributions are welcome.
 
-Requirements.
-------------
+
+## Requirements
 
 None.
 
 
-Role Variables.
---------------
+## Role Variables
 
 Set *bsd_yazvs_cron* to enable cron.
 
@@ -31,75 +30,69 @@ Fit cron command to your needs:
 bsd_yazvs_cron_command: "Validate-DNS.sh"
 ```
 
-TBD. Review defaults and examples in vars.
+Review defaults and examples in vars.
 
 
-Dependencies.
-------------
+## Dependencies
 
 None.
 
 
-Workflow
---------
+## Workflow
 
-1) Change shell to /bin/sh.
-
-```
-# ansible host -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod user -s /bin/sh'
-```
-
-2) Install role.
+1) Change shell to /bin/sh
 
 ```
-# ansible-galaxy install vbotka.yazvs
+shell> ansible host -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod user -s /bin/sh'
 ```
 
-3) Fit variables.
+2) Install role
 
 ```
-# editor vbotka.yazvs/vars/main.yml
+shell> ansible-galaxy install vbotka.yazvs
 ```
 
-4) Create playbook.
+3) Fit variables
 
 ```
-# cat freebsd-yazvs.yml
+shell> editor vbotka.yazvs/vars/main.yml
+```
+
+4) Create playbook
+
+```
+shell> cat freebsd-yazvs.yml
 - hosts: srv.example.com
   roles:
-    - vbotka.yazvs
+    - vbotka.yazv
 ```
 
-5) Install and configure yazvs.
+5) Install and configure yazvs
 
 ```
-# ansible-playbook freebsd-yazvs.yml
-```
-
-
-Example how to run yazvs.pl
----------------------------
-
-```
-dig @lax.xfr.dns.icann.org example.com axfr > example.com
-dig example.com dnskey | awk '$5 == 257' > example.com.ksk
-yazvs.pl -u -a example.com.ksk -e 7 -m lax.xfr.dns.icann.org example.com
+shell> ansible-playbook freebsd-yazvs.yml
 ```
 
 
-References
-----------
+## Example how to run yazvs.pl
+
+```
+shell> dig @lax.xfr.dns.icann.org example.com axfr > example.com
+shell> dig example.com dnskey | awk '$5 == 257' > example.com.ksk
+shell> yazvs.pl -u -a example.com.ksk -e 7 -m lax.xfr.dns.icann.org example.com
+```
+
+
+## References
 
 - [YAZVS — Yet Another Zone Validation Script](http://yazvs.verisignlabs.com/)
 
 
-License.
--------
+## License
 
 [![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
 
 
-Author Information.
-------------------
+## Author Information
 
 [Vladimir Botka](https://botka.link)

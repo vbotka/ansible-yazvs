@@ -1,7 +1,7 @@
 ---
-# tasks for vbotka.yazvs
+# tasks for yazvs
 
-- name: "Check supported distro"
+- name: "Test supported distro"
   fail:
     msg: "[ERROR] Unsupported distribution."
   when: not ansible_distribution in bsd_yazvs_supported_distributions

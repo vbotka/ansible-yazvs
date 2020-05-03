@@ -1,12 +1,12 @@
 ---
-# default vars vbotka.yazvs
+# default vars yazvs
 
 bsd_yazvs_supported_distributions:
   - FreeBSD
 
 freebsd_install_method: "packages"
 # freebsd_install_method: "ports"
-# freebsd_use_packages: "yes"
+freebsd_use_packages: true
 freebsd_install_retries: 10
 freebsd_install_delay: 5
 
@@ -17,8 +17,8 @@ bsd_yazvs_packages:
   - lang/p5-Switch
   - misc/p5-List-Compare
 
-bsd_yazvs_geturl_force: no
-bsd_yazvs_backup_conf: no
+bsd_yazvs_geturl_force: false
+bsd_yazvs_backup_conf: false
 
 bsd_yazvs_bin: "yazvs.pl"
 bsd_yazvs_bin_dir: "/root/bin"

@@ -5,7 +5,7 @@
     name: "MAILTO"
     value: "{{ bsd_yazvs_cron_mailto }}"
     user: "{{ bsd_yazvs_cron_user }}"
-  when: bsd_yazvs_cron
+  when: bsd_yazvs_cron|bool
 
 - name: "cron: Configure cron DNSSEC check"
   cron:
@@ -14,7 +14,7 @@
     job: "{{ bsd_yazvs_cron_command }}"
     hour: "{{ bsd_yazvs_cron_hour }}"
     minute: "{{ bsd_yazvs_cron_minute }}"
-  when: bsd_yazvs_cron
+  when: bsd_yazvs_cron|bool
 
 # EOF
 ...

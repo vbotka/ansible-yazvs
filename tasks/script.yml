@@ -7,7 +7,7 @@
 
 - name: "script: Create script for cron"
   template:
-    src: "Validate-DNS.j2"
+    src: Validate-DNS.j2
     dest: "{{ bsd_yazvs_bin_dir }}/Validate-DNS.sh"
     owner: "root"
     group: "wheel"
