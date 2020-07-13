@@ -1,12 +1,13 @@
 ---
 # tasks for yazvs
 
-- name: "Test supported distro"
+- name: Test supported distro
   fail:
     msg: "[ERROR] Unsupported distribution."
   when: not ansible_distribution in bsd_yazvs_supported_distributions
 
 - include: packages.yml
+  when: bsd_yazvs_install|bool
   tags: bsd_yazvs_packages
 
 - include: source.yml

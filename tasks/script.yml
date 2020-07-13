@@ -9,8 +9,8 @@
   template:
     src: Validate-DNS.j2
     dest: "{{ bsd_yazvs_bin_dir }}/Validate-DNS.sh"
-    owner: "root"
-    group: "wheel"
+    owner: root
+    group: wheel
     mode: "0755"
     backup: "{{ bsd_yazvs_backup_conf }}"
 
