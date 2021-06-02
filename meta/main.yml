@@ -16,4 +16,6 @@ galaxy_info:
     - freebsd
     - dnssec
 dependencies: []
+collections:
+  - community.general
 ...

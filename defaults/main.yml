@@ -1,6 +1,10 @@
 ---
 # default vars yazvs
 
+bsd_yazvs_install: true
+bsd_yazvs_backup_conf: false
+bsd_yazvs_geturl_force: false
+
 bsd_yazvs_supported_distributions:
   - FreeBSD
 
@@ -10,7 +14,6 @@ freebsd_use_packages: true
 freebsd_install_retries: 10
 freebsd_install_delay: 5
 
-bsd_yazvs_install: true
 bsd_yazvs_packages:
   - dns/p5-Net-DNS
   - dns/p5-Net-DNS-SEC
@@ -18,22 +21,18 @@ bsd_yazvs_packages:
   - lang/p5-Switch
   - misc/p5-List-Compare
 
-bsd_yazvs_geturl_force: false
-bsd_yazvs_backup_conf: false
-
 bsd_yazvs_bin: yazvs.pl
 bsd_yazvs_bin_dir: /root/bin
 bsd_yazvs_source_dir: /usr/local/src/yazvs
 bsd_yazvs_source_url: "https://github.com/verisign/yazvs/raw/master"
-# bsd_yazvs_source_url: "http://yazvs.verisignlabs.com"
-#
+
 bsd_yazvs_cron: false
 bsd_yazvs_cron_user: root
 bsd_yazvs_cron_mailto: root
 bsd_yazvs_cron_hour: "*/4"
 bsd_yazvs_cron_minute: "20"
 bsd_yazvs_cron_command: /root/bin/Validate-DNS.sh
-#
+
 bsd_Validate_DNS_NAMESERVER: lax.xfr.dns.icann.org
 bsd_Validate_DNS_DOMAIN: example.com
 bsd_Validate_DNS_KEYDIR: /root/ksk

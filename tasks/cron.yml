@@ -1,20 +1,18 @@
 ---
 
 - name: "cron: Configure cron MAILTO={{ bsd_yazvs_cron_mailto }}"
-  cronvar:
-    name: "MAILTO"
+  community.general.cronvar:
+    name: MAILTO
     value: "{{ bsd_yazvs_cron_mailto }}"
     user: "{{ bsd_yazvs_cron_user }}"
-  when: bsd_yazvs_cron|bool
 
 - name: "cron: Configure cron DNSSEC check"
-  cron:
-    name: "Check DNSSEC"
+  ansible.builtin.cron:
+    name: Check DNSSEC
     user: "{{ bsd_yazvs_cron_user }}"
     job: "{{ bsd_yazvs_cron_command }}"
     hour: "{{ bsd_yazvs_cron_hour }}"
     minute: "{{ bsd_yazvs_cron_minute }}"
-  when: bsd_yazvs_cron|bool
 
 # EOF
 ...

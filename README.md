@@ -2,7 +2,7 @@
 
 [![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/yazvs)[![Build Status](https://travis-ci.org/vbotka/ansible-yazvs.svg?branch=master)](https://travis-ci.org/vbotka/ansible-yazvs)
 
-[Ansible role.](https://galaxy.ansible.com/vbotka/yazvs/) Install YAZVS (Yet Another Zone Validation Script) from [yazvs.verisignlabs.com](http://yazvs.verisignlabs.com/). Optionaly configure cron to check DNSSEC.
+[Ansible role.](https://galaxy.ansible.com/vbotka/yazvs/) Install YAZVS (Yet Another Zone Validation Script) from [yazvs.verisignlabs.com](http://yazvs.verisignlabs.com/). Optionally configure cron to check DNSSEC.
 
 Feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-yazvs/issues).
 
@@ -11,12 +11,14 @@ Feel free to [share your feedback and report issues](https://github.com/vbotka/a
 
 ## Requirements
 
-None.
+### Collections
+
+- community.general
 
 
 ## Role Variables
 
-Set *bsd_yazvs_cron* to enable cron.
+Review the variables in defaults/main.yml. Set *bsd_yazvs_cron* to enable cron
 
 ```
 bsd_yazvs_cron: true
@@ -32,13 +34,6 @@ Fit cron command to your needs:
 bsd_yazvs_cron_command: "Validate-DNS.sh"
 ```
 
-Review defaults and examples in vars.
-
-
-## Dependencies
-
-None.
-
 
 ## Workflow
 
@@ -48,13 +43,14 @@ None.
 shell> ansible host -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod user -s /bin/sh'
 ```
 
-2) Install role
+2) Install the role and collections
 
 ```
-shell> ansible-galaxy install vbotka.yazvs
+shell> ansible-galaxy role install vbotka.yazvs
+shell> ansible-galaxy collection install community.general
 ```
 
-3) Fit variables
+3) Fit variables, e.g. in vars/main.yml
 
 ```
 shell> editor vbotka.yazvs/vars/main.yml
@@ -76,7 +72,8 @@ shell> ansible-playbook freebsd-yazvs.yml
 ```
 
 
-## Example how to run yazvs.pl
+## Example on how to run yazvs.pl
+
 
 ```
 shell> dig @lax.xfr.dns.icann.org example.com axfr > example.com
