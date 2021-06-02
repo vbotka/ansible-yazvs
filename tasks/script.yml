@@ -1,12 +1,12 @@
 ---
 
 - name: "script: Create {{ bsd_Validate_DNS_KEYDIR }}"
-  file:
+  ansible.builtin.file:
     state: directory
     path: "{{ bsd_Validate_DNS_KEYDIR }}"
 
 - name: "script: Create script for cron"
-  template:
+  ansible.builtin.template:
     src: Validate-DNS.j2
     dest: "{{ bsd_yazvs_bin_dir }}/Validate-DNS.sh"
     owner: root

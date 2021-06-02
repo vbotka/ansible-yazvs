@@ -5,6 +5,7 @@
   fail:
     msg: "[ERROR] Unsupported distribution."
   when: not ansible_distribution in bsd_yazvs_supported_distributions
+  tags: allways
 
 - include: packages.yml
   when: bsd_yazvs_install|bool
@@ -20,6 +21,7 @@
   tags: bsd_yazvs_script
 
 - include: cron.yml
+  when: bsd_yazvs_cron|bool
   tags: bsd_yazvs_cron
 
 # EOF
