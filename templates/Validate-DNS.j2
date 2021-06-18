@@ -2,14 +2,14 @@
 #set -x
 
 YAZVS="{{ bsd_yazvs_bin_dir }}/{{ bsd_yazvs_bin }}"
-{% if bsd_Validate_DNS_NAMESERVER %}
-NAMESERVER="{{ bsd_Validate_DNS_NAMESERVER }}"
+{% if bsd_validate_dns_nameserver %}
+NAMESERVER="{{ bsd_validate_dns_nameserver }}"
 {% endif %}
-DOMAIN="{{ bsd_Validate_DNS_DOMAIN }}"
-KEYDIR="{{ bsd_Validate_DNS_KEYDIR }}"
-EXPDAYS="{{ bsd_Validate_DNS_EXPDAYS }}"
-VERBOSE="{{ bsd_Validate_DNS_VERBOSE }}"
-DEBUG="{{ bsd_Validate_DNS_DEBUG }}"
+DOMAIN="{{ bsd_validate_dns_domain }}"
+KEYDIR="{{ bsd_validate_dns_keydir }}"
+EXPDAYS="{{ bsd_validate_dns_expdays }}"
+VERBOSE="{{ bsd_validate_dns_verbose }}"
+DEBUG="{{ bsd_validate_dns_debug }}"
 
 ERR="0"
 
