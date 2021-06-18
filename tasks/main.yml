@@ -2,25 +2,30 @@
 # tasks for yazvs
 
 - name: Test supported distro
-  fail:
+  ansible.builtin.fail:
     msg: "[ERROR] Unsupported distribution."
   when: not ansible_distribution in bsd_yazvs_supported_distributions
   tags: allways
 
-- include: packages.yml
+- name: Import packages.yml
+  ansible.builtin.import_tasks: packages.yml
   when: bsd_yazvs_install|bool
   tags: bsd_yazvs_packages
 
-- include: source.yml
+- name: Import source.yml
+  ansible.builtin.import_tasks: source.yml
   tags: bsd_yazvs_source
 
-- include: copy.yml
+- name: Import copy.yml
+  ansible.builtin.import_tasks: copy.yml
   tags: bsd_yazvs_copy
 
-- include: script.yml
+- name: Import script.yml
+  ansible.builtin.import_tasks: script.yml
   tags: bsd_yazvs_script
 
-- include: cron.yml
+- name: Import cron.yml
+  ansible.builtin.import_tasks: cron.yml
   when: bsd_yazvs_cron|bool
   tags: bsd_yazvs_cron
 

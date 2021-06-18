@@ -4,6 +4,7 @@
   ansible.builtin.file:
     state: directory
     path: "{{ bsd_yazvs_source_dir }}"
+    mode: "{{ bsd_yazvs_source_dir_mode|default(omit) }}"
 
 - name: "source: Download source from {{ bsd_yazvs_source_url }}/{{ bsd_yazvs_bin }}"
   ansible.builtin.get_url:

@@ -18,7 +18,7 @@ Feel free to [share your feedback and report issues](https://github.com/vbotka/a
 
 ## Role Variables
 
-Review the variables in defaults/main.yml. Set *bsd_yazvs_cron* to enable cron
+See the variables in defaults/main.yml. Set *bsd_yazvs_cron* to enable cron
 
 ```
 bsd_yazvs_cron: true
@@ -27,7 +27,7 @@ bsd_yazvs_cron: true
 Fit cron command to your needs:
 
 - Review the template Validate-DNS.j2
-- Review related bsd_Validate_DNS_* variables
+- Review related bsd_validate_dns_* variables
 - Review options of yazvs.pl
 
 ```

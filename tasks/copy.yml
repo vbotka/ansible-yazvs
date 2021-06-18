@@ -12,7 +12,7 @@
   tags: bsd_yazvs_source_copy
 
 - name: "copy: Which perl"
-  command:
+  ansible.builtin.command:
     cmd: which perl
   register: which_perl
   changed_when: false
@@ -32,6 +32,7 @@
   ansible.builtin.file:
     state: directory
     path: "{{ bsd_yazvs_bin_dir }}"
+    mode: "{{ bsd_yazvs_bin_dir_mode|default(omit) }}"
   tags: bsd_yazvs_bindir_create
 
 - name: "copy: Copy {{ bsd_yazvs_source_dir }}/{{ bsd_yazvs_bin }}.patched to
@@ -43,7 +44,6 @@
     group: wheel
     mode: "0755"
     remote_src: true
-  when: not ansible_check_mode
   tags: bsd_yazvs_bin_copy
 
 # EOF
