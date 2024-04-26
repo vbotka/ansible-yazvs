@@ -5,8 +5,7 @@ bsd_yazvs_install: true
 bsd_yazvs_backup_conf: false
 bsd_yazvs_geturl_force: false
 
-bsd_yazvs_supported_distributions:
-  - FreeBSD
+bsd_yazvs_supported_distributions: [FreeBSD]
 
 freebsd_install_method: packages
 # freebsd_install_method: ports
@@ -22,11 +21,12 @@ bsd_yazvs_packages:
   - misc/p5-List-Compare
 
 bsd_yazvs_bin: yazvs.pl
+# bsd_yazvs_bin_mode: "0755"
 bsd_yazvs_bin_dir: /root/bin
 # bsd_yazvs_bin_dir_mode: "0755"
 bsd_yazvs_source_dir: /usr/local/src/yazvs
 # bsd_yazvs_source_dir_mode: "0755"
-bsd_yazvs_source_url: "https://github.com/verisign/yazvs/raw/master"
+bsd_yazvs_source_url: https://raw.githubusercontent.com/verisign/yazvs/master
 
 bsd_yazvs_cron: false
 bsd_yazvs_cron_user: root
@@ -44,4 +44,3 @@ bsd_validate_dns_verbose: "0"
 bsd_validate_dns_debug: "0"
 
 # EOF
-...

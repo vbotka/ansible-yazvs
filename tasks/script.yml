@@ -1,12 +1,11 @@
 ---
-
-- name: "script: Create {{ bsd_Validate_dns_keydir }}"
+- name: "Script: Create {{ bsd_Validate_dns_keydir }}"
   ansible.builtin.file:
     state: directory
     path: "{{ bsd_validate_dns_keydir }}"
-    mode: "{{ bsd_validate_dns_keydir_mode|default(omit) }}"
+    mode: "{{ bsd_validate_dns_keydir_mode | d(omit) }}"
 
-- name: "script: Create script for cron"
+- name: "Script: Create script for cron"
   ansible.builtin.template:
     src: Validate-DNS.j2
     dest: "{{ bsd_yazvs_bin_dir }}/Validate-DNS.sh"
@@ -16,4 +15,3 @@
     backup: "{{ bsd_yazvs_backup_conf }}"
 
 # EOF
-...

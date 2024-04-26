@@ -1,16 +1,15 @@
 ---
-
-- name: "source: Create directory for the source code {{ bsd_yazvs_source_dir }}"
+- name: "Source: Create directory for the source code {{ bsd_yazvs_source_dir }}"
   ansible.builtin.file:
     state: directory
     path: "{{ bsd_yazvs_source_dir }}"
-    mode: "{{ bsd_yazvs_source_dir_mode|default(omit) }}"
+    mode: "{{ bsd_yazvs_source_dir_mode | d(omit) }}"
 
-- name: "source: Download source from {{ bsd_yazvs_source_url }}/{{ bsd_yazvs_bin }}"
+- name: "Source: Download source from {{ bsd_yazvs_source_url ~ '/' ~ bsd_yazvs_bin }}"
   ansible.builtin.get_url:
     url: "{{ bsd_yazvs_source_url }}/{{ bsd_yazvs_bin }}"
     dest: "{{ bsd_yazvs_source_dir }}/{{ bsd_yazvs_bin }}"
+    mode: "{{ bsd_yazvs_bin_mode | d(omit) }}"
     force: "{{ bsd_yazvs_geturl_force }}"
 
 # EOF
-...
