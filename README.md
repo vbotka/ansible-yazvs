@@ -1,4 +1,4 @@
-# YAZVS (Yet Another Zone Validation Script)
+# yazvs
 
 [![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/yazvs)[![Build Status](https://app.travis-ci.com/vbotka/ansible-yazvs.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-yazvs)[![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-yazvs)](https://github.com/vbotka/ansible-yazvs/tags)
 

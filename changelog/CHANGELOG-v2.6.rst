@@ -1,6 +1,6 @@
-======================================
-vbotka.ansible-yazvs 2.6 Release Notes
-======================================
+==============================
+vbotka.yazvs 2.6 Release Notes
+==============================
 
 .. contents:: Topics
 
@@ -21,6 +21,7 @@ Minor Changes
 Bugfixes
 --------
 * Fix README links.
+* Fix README label.
 
 Breaking Changes / Porting Guide
 --------------------------------
