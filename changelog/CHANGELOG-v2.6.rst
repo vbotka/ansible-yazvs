@@ -18,6 +18,9 @@ Major Changes
 
 Minor Changes
 -------------
+* Update README.
+* Update Ansible lint config.
+* Update meta and travis config.
 
 Bugfixes
 --------
