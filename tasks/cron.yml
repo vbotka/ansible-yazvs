@@ -1,12 +1,11 @@
 ---
-
-- name: "cron: Configure cron MAILTO={{ bsd_yazvs_cron_mailto }}"
+- name: "Cron: Configure cron MAILTO={{ bsd_yazvs_cron_mailto }}"
   community.general.cronvar:
     name: MAILTO
     value: "{{ bsd_yazvs_cron_mailto }}"
     user: "{{ bsd_yazvs_cron_user }}"
 
-- name: "cron: Configure cron DNSSEC check"
+- name: "Cron: Configure cron DNSSEC check"
   ansible.builtin.cron:
     name: Check DNSSEC
     user: "{{ bsd_yazvs_cron_user }}"
@@ -15,4 +14,3 @@
     minute: "{{ bsd_yazvs_cron_minute }}"
 
 # EOF
-...
