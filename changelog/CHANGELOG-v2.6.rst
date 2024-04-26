@@ -21,6 +21,8 @@ Minor Changes
 * Update README.
 * Update Ansible lint config.
 * Update meta and travis config.
+* Update default GitHub link to the binary.
+* Fix Ansible lint.
 
 Bugfixes
 --------

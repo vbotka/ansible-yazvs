@@ -3,13 +3,13 @@
 
 - name: Test supported distro
   ansible.builtin.fail:
-    msg: "[ERROR] Unsupported distribution."
+    msg: "[ERR] Unsupported distribution."
   when: not ansible_distribution in bsd_yazvs_supported_distributions
   tags: allways
 
 - name: Import packages.yml
   ansible.builtin.import_tasks: packages.yml
-  when: bsd_yazvs_install|bool
+  when: bsd_yazvs_install | bool
   tags: bsd_yazvs_packages
 
 - name: Import source.yml
@@ -26,7 +26,7 @@
 
 - name: Import cron.yml
   ansible.builtin.import_tasks: cron.yml
-  when: bsd_yazvs_cron|bool
+  when: bsd_yazvs_cron | bool
   tags: bsd_yazvs_cron
 
 # EOF

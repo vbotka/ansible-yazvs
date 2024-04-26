@@ -3,7 +3,7 @@
   ansible.builtin.file:
     state: directory
     path: "{{ bsd_validate_dns_keydir }}"
-    mode: "{{ bsd_validate_dns_keydir_mode | default(omit) }}"
+    mode: "{{ bsd_validate_dns_keydir_mode | d(omit) }}"
 
 - name: "Script: Create script for cron"
   ansible.builtin.template:
