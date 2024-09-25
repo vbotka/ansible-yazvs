@@ -4,6 +4,7 @@ vbotka.yazvs 2.6 Release Notes
 
 .. contents:: Topics
 # BEGIN Commits 2.6.1
+- Update
 - Format meta/main.yml
 - Fix README label.
 - Fix README links.
@@ -18,6 +19,12 @@ Major Changes
 -------------
 Minor Changes
 -------------
+- Update
+- Format meta/main.yml
+- Fix README label.
+- Fix README links.
+- Start devel 2.6.1
+
 Bugfixes
 --------
 Breaking Changes / Porting Guide
