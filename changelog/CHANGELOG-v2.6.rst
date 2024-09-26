@@ -3,33 +3,6 @@ vbotka.yazvs 2.6 Release Notes
 ==============================
 
 .. contents:: Topics
-# BEGIN Commits 2.6.1
-- Update
-- Format meta/main.yml
-- Fix README label.
-- Fix README links.
-- Start devel 2.6.1
-# END Commits 2.6.1
-# BEGIN Release notes 2.6.1
-2.6.1
-=====
-Release Summary
----------------
-Major Changes
--------------
-Minor Changes
--------------
-- Update
-- Format meta/main.yml
-- Fix README label.
-- Fix README links.
-- Start devel 2.6.1
-
-Bugfixes
---------
-Breaking Changes / Porting Guide
---------------------------------
-# END Release notes 2.6.1
 
 
 2.6.1
@@ -37,21 +10,17 @@ Breaking Changes / Porting Guide
 
 Release Summary
 ---------------
-Bugfix release.
+Maintenance update.
 
 Major Changes
 -------------
 
 Minor Changes
 -------------
-
-Bugfixes
---------
-* Fix README links.
-* Fix README label.
-
-Breaking Changes / Porting Guide
---------------------------------
+- Update python 3.11 in .travis.yml
+- Format meta/main.yml
+- Fix README label.
+- Fix README links.
 
 
 2.6.0
