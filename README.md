@@ -1,6 +1,8 @@
 # yazvs
 
-[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/yazvs)[![Build Status](https://app.travis-ci.com/vbotka/ansible-yazvs.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-yazvs)[![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-yazvs)](https://github.com/vbotka/ansible-yazvs/tags)
+[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/yazvs)
+[![Build Status](https://app.travis-ci.com/vbotka/ansible-yazvs.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-yazvs)
+[![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-yazvs)](https://github.com/vbotka/ansible-yazvs/tags)
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/yazvs/) Install YAZVS (Yet Another Zone Validation Script) from [github.com/verisign/yazvs](https://github.com/verisign/yazvs/). Optionally, configure cron to check DNSSEC.
 

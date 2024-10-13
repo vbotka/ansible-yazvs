@@ -5,6 +5,23 @@ vbotka.yazvs 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.2
+=====
+
+Release Summary
+---------------
+Maintenance update.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Tasks formatting improved.
+* Fix environment: CRYPTOGRAPHY_OPENSSL_NO_LEGACY: '1'
+* Update README.
+
+
 2.6.1
 =====
 
