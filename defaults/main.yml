@@ -1,6 +1,6 @@
 ---
 # default vars yazvs
-bsd_yazvs_role_version: 2.6.1
+bsd_yazvs_role_version: 2.6.2
 
 bsd_yazvs_install: true
 bsd_yazvs_backup_conf: false

@@ -1,5 +1,6 @@
 ---
 - name: "Copy: Copy script to {{ bsd_yazvs_bin_dir ~ '.patched' }}"
+  tags: bsd_yazvs_source_copy
   ansible.builtin.copy:
     src: "{{ bsd_yazvs_source_dir }}/{{ bsd_yazvs_bin }}"
     dest: "{{ bsd_yazvs_source_dir }}/{{ bsd_yazvs_bin }}.patched"
@@ -8,33 +9,32 @@
     mode: "0755"
     remote_src: true
   changed_when: false
-  tags: bsd_yazvs_source_copy
 
 - name: "Copy: Which perl"
-  ansible.builtin.command:
-    cmd: which perl
+  tags: bsd_yazvs_which_perl
   register: which_perl
   changed_when: false
-  tags: bsd_yazvs_which_perl
+  ansible.builtin.command:
+    cmd: which perl
 
 - name: "Copy: Patch perl in {{ bsd_yazvs_source_dir  ~ '/' ~  bsd_yazvs_bin ~ '.patched' }}"
+  tags: bsd_yazvs_source_patch
+  changed_when: false
   ansible.builtin.lineinfile:
     dest: "{{ bsd_yazvs_source_dir }}/{{ bsd_yazvs_bin }}.patched"
     insertbefore: BOF
     regexp: '#!'
     line: '#!{{ which_perl.stdout }}'
-  changed_when: false
-  when: not ansible_check_mode
-  tags: bsd_yazvs_source_patch
 
 - name: "Copy: Create directory for installation {{ bsd_yazvs_bin_dir }}"
+  tags: bsd_yazvs_bindir_create
   ansible.builtin.file:
     state: directory
     path: "{{ bsd_yazvs_bin_dir }}"
     mode: "{{ bsd_yazvs_bin_dir_mode | d(omit) }}"
-  tags: bsd_yazvs_bindir_create
 
 - name: "Copy: Copy patched script to {{ bsd_yazvs_bin_dir  ~ '/' ~ bsd_yazvs_bin }}"
+  tags: bsd_yazvs_bin_copy
   ansible.builtin.copy:
     src: "{{ bsd_yazvs_source_dir }}/{{ bsd_yazvs_bin }}.patched"
     dest: "{{ bsd_yazvs_bin_dir }}/{{ bsd_yazvs_bin }}"
@@ -42,7 +42,6 @@
     group: wheel
     mode: "0755"
     remote_src: true
-  tags: bsd_yazvs_bin_copy
 
 
 # EOF

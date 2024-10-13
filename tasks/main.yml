@@ -4,7 +4,7 @@
 - name: Test supported distro
   ansible.builtin.fail:
     msg: "[ERR] Unsupported distribution."
-  when: not ansible_distribution in bsd_yazvs_supported_distributions
+  when: ansible_distribution not in bsd_yazvs_supported_distributions
   tags: allways
 
 - name: Import packages.yml

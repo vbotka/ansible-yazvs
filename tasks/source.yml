@@ -6,6 +6,8 @@
     mode: "{{ bsd_yazvs_source_dir_mode | d(omit) }}"
 
 - name: "Source: Download source from {{ bsd_yazvs_source_url ~ '/' ~ bsd_yazvs_bin }}"
+  environment:
+    CRYPTOGRAPHY_OPENSSL_NO_LEGACY: '1'
   ansible.builtin.get_url:
     url: "{{ bsd_yazvs_source_url }}/{{ bsd_yazvs_bin }}"
     dest: "{{ bsd_yazvs_source_dir }}/{{ bsd_yazvs_bin }}"
